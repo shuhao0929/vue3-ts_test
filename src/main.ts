@@ -16,6 +16,10 @@ app.use(store);
 import router from "./router";
 app.use(router);
 
+//挂载axios
+import axios from 'axios'
+app.provide('$axios', axios)
+
 // 挂载ant
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";

@@ -8,6 +8,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 // 路由懒加载
 const Login = () => import("@/views/Login/LoginIndex.vue");
+const Home = () => import("@/views/Home/home.vue");
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/login",
     name: "login",
     component: Login,
+  },
+  {
+    path: "/home",
+    name: "home",
+    component: Home,
   },
 ];
 
