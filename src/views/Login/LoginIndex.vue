@@ -16,7 +16,9 @@
           <a-input-password v-model:value="form.password" />
         </a-form-item>
         <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-          <a-button type="primary" html-type="submit" @click="handleSubmit()">登录</a-button>
+          <a-button type="primary" html-type="submit" @click="handleSubmit()"
+            >登录</a-button
+          >
         </a-form-item>
       </a-form>
     </div>
@@ -24,14 +26,15 @@
 </template>
 
 <script lang="ts" setup>
+import { message } from 'ant-design-vue';
 import { handleLogin } from "@/api/login";
 import { reactive, toRaw } from "@vue/reactivity";
 // 路由跳转需要先导入
-import { useRouter } from 'vue-router'
-const router = useRouter()
-interface FromState{
-  username:string,
-  password:string
+import { useRouter } from "vue-router";
+const router = useRouter();
+interface FromState {
+  username: string;
+  password: string;
 }
 const form = reactive<FromState>({
   username: "",
@@ -41,9 +44,15 @@ const form = reactive<FromState>({
 async function handleSubmit() {
   // 模拟接口
   // const res = await handleLogin(toRaw(form))
-  router.push({path:'/home'})
+  if (form.username&& form.password!== "admin") {
+    message.error("账号密码错误!");
+    localStorage.removeItem('token')
+  }else{
+    message.success('登录成功!')
+    localStorage.setItem('token',form.username)
+    router.push({path:'/home'})
+  }
 }
-
 </script>
 
 <style scoped lang="less">
