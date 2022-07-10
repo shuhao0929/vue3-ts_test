@@ -1,8 +1,3 @@
-// Ts引用文件 必须需要require
-
-
-// const request = require('@/request/index.ts')
-
 import request from '@/request/index'
 // 定义接口的传参
 interface Login {
@@ -10,6 +5,7 @@ interface Login {
 	password: string
 }
 
+// 登录接口
 export function handleLogin(params: Login) {
 	return request({
 		url: '',

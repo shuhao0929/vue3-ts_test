@@ -7,7 +7,7 @@
     <a-layout>
       <a-layout-header>
         <!-- 头部 -->
-        <HeaderVue/>
+        <HeaderVue />
       </a-layout-header>
       <a-layout-content>
         <router-view></router-view>

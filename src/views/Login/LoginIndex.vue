@@ -42,8 +42,6 @@ const form = reactive<FromState>({
 });
 
 async function handleSubmit() {
-  // 模拟接口
-  // const res = await handleLogin(toRaw(form))
   if (form.username&& form.password!== "admin") {
     message.error("账号密码错误!");
     localStorage.removeItem('token')
@@ -52,6 +50,10 @@ async function handleSubmit() {
     localStorage.setItem('token',form.username)
     router.push({path:'/home'})
   }
+
+  // 模拟接口
+  // const res = await handleLogin(toRaw(form))
+
 }
 </script>
 
